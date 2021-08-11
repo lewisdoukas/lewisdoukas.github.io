@@ -1,0 +1,39 @@
+.tabSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 2px solid blueviolet;
+  padding: 0;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.crs {
+  display: flex;
+  flex-direction: row;
+}
+
+.crs > * {
+  padding-right: 3rem;
+  width: 23vw;
+  text-align: center;
+}
+
+.coords {
+  display: flex;
+  flex-direction: row;
+}
+
+.coords > * {
+  padding-right: 3rem;
+  width: 15vw;
+  align-content: center;
+  text-align: center;
+}

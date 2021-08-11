@@ -1,0 +1,130 @@
+<div class="tabSection">
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Between CRSs">
+      <form [formGroup]="form" class="parent" (ngSubmit)="reproject()">
+        <h1 class="mat-headline titleReprojection">
+          Reprojection Between Two <br />
+          Coordinate Reference Systems
+        </h1>
+        <div class="crs">
+          <mat-form-field>
+            <mat-label for=""> From CRS </mat-label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Pick one"
+              aria-label="Number"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto1"
+            />
+            <mat-autocomplete #auto1="matAutocomplete" #from>
+              <mat-option
+                (click)="onSubmitEPSG(from)"
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+
+            <div
+              *ngIf="epsgFROM?.touched && epsgFROM?.invalid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="epsgFROM?.errors?.required">
+                FROM EPSG code is required.
+              </div>
+              <div *ngIf="epsgFROM?.errors?.invalidEPSG">
+                FROM EPSG code is invalid.
+              </div>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label for=""> To CRS </mat-label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Pick one"
+              aria-label="Number"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto2"
+            />
+            <mat-autocomplete #auto2="matAutocomplete" #to>
+              <mat-option
+                (click)="onSubmitEPSG(to)"
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+
+            <div
+              *ngIf="epsgTO?.touched && epsgTO?.invalid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="epsgTO?.errors?.required">
+                TO EPSG code is required.
+              </div>
+              <div *ngIf="epsgTO?.errors?.invalidEPSG">
+                TO EPSG code is invalid.
+              </div>
+            </div>
+          </mat-form-field>
+        </div>
+
+        <div class="coords">
+          <mat-form-field>
+            <mat-label for="">Enter x value</mat-label>
+            <input
+              matInput
+              formControlName="xValue"
+              type="number"
+              class="form-control"
+            />
+            <div
+              *ngIf="xValue?.touched && xValue?.invalid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="xValue?.errors?.required">
+                Value of x is required.
+              </div>
+            </div>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="">Enter y value</mat-label>
+            <input
+              matInput
+              formControlName="yValue"
+              type="number"
+              class="form-control"
+            />
+            <div
+              *ngIf="yValue?.touched && yValue?.invalid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="yValue?.errors?.required">
+                Value of y is required.
+              </div>
+            </div>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="">Enter z value</mat-label>
+            <input
+              matInput
+              formControlName="zValue"
+              type="number"
+              class="form-control"
+            />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary">Transform</button>
+      </form>
+    </mat-tab>
+    <mat-tab label="Second">Content 2</mat-tab>
+    <mat-tab label="Third">Content 3</mat-tab>
+  </mat-tab-group>
+</div>

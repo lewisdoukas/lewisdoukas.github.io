@@ -1,0 +1,23 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+}
+
+.results > * {
+  margin-top: 1rem;
+}
+
+.btnSection {
+  margin: 3rem 0 1rem auto;
+}
+
+.btnFirst {
+  margin-right: 3rem;
+}
